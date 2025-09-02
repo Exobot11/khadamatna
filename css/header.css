@@ -1,0 +1,405 @@
+/* أنماط الهيدر الأساسية المعدلة */
+:root {
+--dark-color: #2a2a72;
+--secondary-color: #6c63ff;
+--primary-color: #6c63ff;
+--text-color: #333;
+--light-bg: #f8fafc;
+--header-height: 80px;
+--nav-item-spacing: 25px;
+}
+
+.main-header {
+
+position: fixed;
+
+top: 0;
+
+right: 0; /* بدل left لتناسب RTL */
+
+width: 100%;
+
+z-index: 1000;
+
+background: rgba(42, 42, 114, 0.92);
+
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+
+backdrop-filter: blur(12px);
+
+-webkit-backdrop-filter: blur(12px);
+
+height: auto; /* بدل var للحجم التلقائي */
+
+display: flex;
+
+justify-content: center;
+
+align-items: center;
+
+padding: 10px 20px;
+
+flex-wrap: wrap; /* مهم للهواتف */
+
+transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+font-family: 'Tajawal', 'Arial', sans-serif;
+
+direction: rtl;
+
+}
+.main-header.scrolled {
+height: 70px;
+background: rgba(20, 20, 60, 0.98);
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.header-container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 100%;
+padding: 0 6%;
+max-width: 1400px;
+margin: 0 auto;
+position: relative;
+text-align: right;
+}
+
+/* تعديلات الشعار */
+.logo-wrapper {
+display: flex;
+align-items: center;
+gap: 15px;
+cursor: pointer;
+transition: all 0.4s ease;
+position: absolute;
+right: 6%;
+overflow: hidden;
+padding: 5px 0;
+}
+
+.logo-wrapper::before {
+content: '';
+position: absolute;
+bottom: 0;
+right: 0;
+width: 0;
+height: 2px;
+background: var(--secondary-color);
+transition: width 0.6s ease;
+}
+
+.logo-wrapper:hover::before {
+width: 100%;
+}
+
+.logo-img {
+width: 36px;
+height: 36px;
+object-fit: contain;
+filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
+transition: all 0.5s ease;
+}
+
+.logo-text {
+font-size: 1.4rem;
+font-weight: 800;
+color: white;
+text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+letter-spacing: 0;
+background: linear-gradient(to left, #fff, #e0e0ff);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+transition: all 0.4s ease;
+}
+
+/* تعديلات القائمة */
+.header-nav {
+flex-grow: 1;
+display: flex;
+justify-content: center;
+}
+
+.nav-list {
+display: flex;
+gap: var(--nav-item-spacing);
+position: relative;
+margin: 0;
+padding: 0;
+list-style: none;
+padding-right: 0;
+}
+
+.nav-item {
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 12px 22px;
+position: relative;
+cursor: pointer;
+border-radius: 50px;
+text-decoration: none;
+transition: all 0.3s ease;
+}
+
+.nav-icon {
+font-size: 1.3rem;
+color: rgba(255, 255, 255, 0.85);
+transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+position: relative;
+z-index: 2;
+text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+display: inline-block !important;
+font-style: normal !important;
+}
+
+.nav-text {
+font-size: 0.9rem;
+margin-top: 6px;
+color: rgba(255, 255, 255, 0.85);
+transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+position: relative;
+z-index: 2;
+font-weight: 600;
+}
+
+.nav-circle {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%) scale(0);
+width: 70px;
+height: 70px;
+background: radial-gradient(circle, rgba(108, 99, 255, 0.25), transparent 70%);
+border-radius: 50%;
+z-index: 1;
+opacity: 0;
+transition: all 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.nav-item::after {
+content: '';
+position: absolute;
+bottom: 10px;
+left: 50%;
+transform: translateX(-50%);
+width: 0;
+height: 3px;
+background: var(--secondary-color);
+border-radius: 3px;
+transition: width 0.4s ease;
+}
+
+.nav-item.active .nav-circle {
+opacity: 1;
+transform: translate(-50%, -50%) scale(1);
+}
+
+.nav-item.active::after {
+width: 30px;
+}
+
+/* تعديلات زر تسجيل الدخول */
+.header-login {
+position: absolute;
+left: 6%;
+}
+
+.login-btn {
+display: flex;
+align-items: center;
+gap: 10px;
+background: linear-gradient(135deg, rgba(108, 99, 255, 0.25), rgba(42, 42, 114, 0.4));
+padding: 10px 20px 10px 15px;
+border-radius: 50px;
+color: white;
+font-weight: 600;
+transition: all 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+backdrop-filter: blur(5px);
+border: none;
+cursor: pointer;
+position: relative;
+overflow: hidden;
+border: 1px solid rgba(255, 255, 255, 0.1);
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+direction: rtl;
+font-family: inherit;
+}
+
+/* تأثيرات الحركة */
+@keyframes fadeInDown {
+from {
+opacity: 0;
+transform: translateY(-30px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+@keyframes pulse {
+0% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.05);
+}
+100% {
+transform: scale(1);
+}
+}
+
+.main-header {
+animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.logo-img {
+animation: pulse 3s infinite ease-in-out;
+}
+
+/* تحسينات الهواتف */
+@media (max-width: 992px) {
+.header-nav {
+display: none;
+}
+
+.header-container {
+padding: 0 4%;
+justify-content: space-between;
+}
+
+.logo-wrapper {
+position: static;
+margin-right: auto;
+}
+
+.header-login {
+position: static;
+}
+
+.logo-text {
+font-size: 1.3rem;
+}
+
+.login-btn {
+padding: 10px 20px;
+font-size: 0.9rem;
+}
+}
+
+@media (max-width: 768px) {
+:root {
+--header-height: 70px;
+}
+
+.main-header {
+height: var(--header-height);
+backdrop-filter: blur(8px);
+-webkit-backdrop-filter: blur(8px);
+}
+
+.header-container {
+padding: 0 20px;
+}
+
+.logo-wrapper {
+gap: 10px;
+}
+
+.logo-img {
+width: 32px;
+height: 32px;
+}
+
+.logo-text {
+font-size: 1.2rem;
+}
+
+.login-btn {
+padding: 8px 16px 8px 12px;
+font-size: 0.85rem;
+}
+
+.nav-item:active,
+.login-btn:active,
+.logo-wrapper:active {
+transform: scale(0.95);
+transition: transform 0.1s ease;
+}
+}
+
+@media (max-width: 576px) {
+:root {
+--header-height: 60px;
+}
+
+.header-container {
+padding: 0 15px;
+}
+
+.logo-img {
+width: 28px;
+height: 28px;
+}
+
+.login-btn {
+padding: 7px 14px 7px 10px;
+font-size: 0.8rem;
+}
+
+.login-btn span {
+display: none;
+}
+
+.login-btn i {
+margin: 0;
+}
+
+.logo-text {
+display: none;
+}
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+:root {
+--header-height: 60px;
+}
+
+.main-header {
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+}
+}
+
+/* تأكد من تحميل خط Font Awesome */
+.fas, .far, .fab {
+font-family: 'Font Awesome 5 Free' !important;
+font-weight: 900 !important;
+}
+@media (max-width: 992px) {
+  .header-nav {
+    display: flex !important;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .nav-list {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .nav-item {
+    flex-direction: row !important; /* ✅ يجعل الأيقونة والنص بجانب بعض */
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .nav-text {
+    margin-top: 0 !important; /* ✅ يلغي المسافة بين الأيقونة والنص */
+  }
+}
