@@ -1,0 +1,520 @@
+/* ============ Root Variables ============ */
+:root {
+    --primary-color: #6c63ff;
+    --primary-hover: #4a42e8;
+    --secondary-color: #00B0FF;
+    --dark-bg: #2a2a72;
+    --card-bg: #ffffff;
+    --form-bg: #f8f9fa;
+    --text-light: #ffffff;
+    --text-dark: #333333;
+    --text-muted: #777777;
+    --error-color: #dc3545;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --border-radius: 12px;
+    --transition-speed: 0.4s;
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --box-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* ============ Base Reset ============ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Tajawal', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ============ Particles Container ============ */
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+}
+
+/* ============ Main Section ============ */
+.login-main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem 1rem 2rem;
+}
+
+.login-container {
+    max-width: 1000px;
+    width: 100%;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    display: flex;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1;
+    transition: var(--transition-speed);
+}
+
+.login-container:hover {
+    box-shadow: var(--box-shadow-hover);
+    transform: translateY(-5px);
+}
+
+.login-card {
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+}
+
+/* ============ Illustration ============ */
+.login-illustration {
+    flex: 1;
+    background: linear-gradient(135deg, var(--dark-bg), var(--primary-color));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-illustration::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(42, 42, 114, 0.9), rgba(108, 99, 255, 0.8));
+    z-index: 1;
+}
+
+.illustration-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--text-light);
+    padding: 1rem;
+}
+
+.login-illustration img {
+    max-width: 100%;
+    max-height: 220px;
+    animation: float 6s ease-in-out infinite;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+}
+
+.illustration-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.illustration-text {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.floating-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.floating-icons i {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    animation: float 4s ease-in-out infinite;
+    transition: var(--transition-speed);
+}
+
+.floating-icons i:nth-child(1) { animation-delay: 0.5s; }
+.floating-icons i:nth-child(2) { animation-delay: 1s; }
+.floating-icons i:nth-child(3) { animation-delay: 1.5s; }
+
+.floating-icons i:hover {
+    color: var(--text-light);
+    transform: scale(1.2);
+}
+
+/* ============ Form Section ============ */
+.login-form-container {
+    flex: 1;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: var(--form-bg);
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.login-logo {
+    height: 60px;
+    transition: var(--transition-speed);
+}
+
+.login-logo:hover {
+    transform: rotate(15deg);
+}
+
+.login-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--dark-bg);
+    margin-bottom: 0.5rem;
+    position: relative;
+    text-align: center;
+}
+
+.login-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+.login-subtitle {
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+/* ============ Login Buttons ============ */
+.discord-login-btn {
+    background: var(--primary-color);
+    border: none;
+    color: #fff;
+    padding: 1rem 1.8rem;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition-speed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+}
+
+.discord-login-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.6s;
+    z-index: -1;
+}
+
+.discord-login-btn:hover {
+    background: var(--primary-hover);
+    box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
+}
+
+.discord-login-btn:hover::before {
+    left: 100%;
+}
+
+/* ============ Divider ============ */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+}
+
+.divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ddd, transparent);
+}
+
+.divider-text {
+    padding: 0 1rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+
+/* ============ Footer ============ */
+.login-footer {
+    background: var(--dark-bg);
+    padding: 1.5rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-links {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: var(--transition-speed);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-links a:hover {
+    color: var(--text-light);
+    text-decoration: underline;
+}
+
+/* ============ Animations ============ */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+    0% { transform: scale(0.95); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 768px) {
+    .login-card {
+        flex-direction: column;
+    }
+
+    .login-illustration {
+        padding: 1.5rem;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .login-form-container {
+        padding: 2rem;
+    }
+
+    .login-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .login-form-container {
+        padding: 1.5rem;
+    }
+    
+    .login-title {
+        font-size: 1.8rem;
+    }
+    
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .forgot-password {
+        margin-top: 0.5rem;
+    }
+}
+
+
+
+
+
+
+
+
+/* ============ ملف المستخدم ============ */
+.user-profile {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.avatar-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.avatar-container:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* تأثير انتقال سلس */
+    transform-origin: center; /* للتكبير من المركز */
+}
+
+.avatar-container:hover .user-avatar {
+    transform: scale(1.15); /* التكبير بنسبة 15% */
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* إضافة ظل خفيف عند التكبير */
+}
+/* تأثير إضافي عند النقر */
+.user-avatar:active {
+    transform: scale(1.05); /* تكبير أقل عند النقر */
+    transition: all 0.1s ease; /* انتقال أسرع عند النقر */
+}
+
+.username {
+    font-weight: 500;
+    font-size: 14px;
+    color: #fff;
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dropdown-icon {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.avatar-container:hover .dropdown-icon {
+    color: rgba(255, 255, 255, 0.9);
+}
+/* ============ القائمة المنسدلة ============ */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #2f3136;
+    border-radius: 4px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    min-width: 180px;
+    z-index: 1000;
+    overflow: hidden;
+    margin-top: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-menu::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    right: 15px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent #2f3136 transparent;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 15px;
+    background: none;
+    border: none;
+    color: #f04747;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: right;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+    background-color: rgba(240, 71, 71, 0.1);
+    color: #ff6b6b;
+}
+
+.logout-btn:active {
+    background-color: rgba(240, 71, 71, 0.2);
+}
+
+/* ============ تأثيرات الحركة ============ */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.fa-spinner {
+    animation: spin 1s linear infinite;
+}
